@@ -71,5 +71,22 @@ class Terminal_tile:
         self.pen.up() 
 
 
+    def register_click(self, fun):
+        '''
+        Method -- register_click()
+        Parameters:
+            self -- the current object
+            fun -- a function to call when the user clicks on the screen
+        '''
+        screen = turtle.Screen()
+        screen.onclick(fun)
 
+
+    def deregister_click(self):
+        '''
+        Method -- register_click()
+        Parameters: self -- the current object
+        '''
+        screen = turtle.Screen()
+        screen.onclick(None)
 
