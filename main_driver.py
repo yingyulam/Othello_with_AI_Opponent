@@ -17,13 +17,11 @@ def main():
         handler.get_click_place_tile()
 
     except FileNotFoundError:
-        raise FileNotFoundError("file {} does not exist".format(self.filename))
+        raise FileNotFoundError("file does not exist")
     except PermissionError:
-        raise PermissionError("you do not have permission to use {}".\
-            format(self.filename))
+        raise PermissionError("you do not have permission to use the file")
     except OSError as ex:
-        raise OSError("Something went wrong while reading the file {}".\
-            format(self.filename))
+        raise OSError("Something went wrong while reading the file")
 
 if __name__ == '__main__':
     main()

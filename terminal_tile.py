@@ -1,7 +1,7 @@
 '''
 Yingyu Lin
 CS 5001, Fall 2021
-Final Project, Milestone 1
+Final Project, Milestone 3
 
 This program creates a class Terminal_tile to draw a tile on the screen.
 It belongs to View.
@@ -20,6 +20,7 @@ class Terminal_tile:
         Constructor -- create a new instance of Terminal_tile
         Parameter: self -- the current object
         '''
+        self.name = "Tile"
         self.radius = RADIUS
         self.color = "black"
         self.pen = turtle.Turtle()

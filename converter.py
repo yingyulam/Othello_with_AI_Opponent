@@ -1,7 +1,7 @@
 '''
 Yingyu Lin
 CS 5001, Fall 2021
-Final Project, Milestone 1
+Final Project, Milestone 3
 
 This program creates a class Converter that converts between the index of cell 
 (row, column) and x,y coordiantes on the screen. It belongs to Controller.

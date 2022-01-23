@@ -1,7 +1,7 @@
 '''
 Yingyu Lin
 CS 5001, Fall 2021
-Final Project, Milestone 1
+Final Project, Milestone 3
 
 This program creates a class Terminal_board to draw the board on the screen.
 It belongs to View.
@@ -37,6 +37,7 @@ class Terminal_board:
         if board_size % TWO != 0:
             raise ValueError('board_size must be an even number')
             
+        self.name = "Terminal_board"
         self.board_size = board_size
         self.corner = -self.board_size * SQUARE / TWO
         self.pen = turtle.Turtle()
@@ -122,7 +123,7 @@ class Terminal_board:
             self.draw_line()
 
 
-    def announce_turn(self, opponent_color):
+    def announce_turn(self, color):
         '''
         Method -- annouce_turn()
             Announce the turn on the screen
@@ -133,20 +134,20 @@ class Terminal_board:
             raise TypeError if the opponent_color argument is not a string
             raise ValueError if the opponent_color argument is not black or white
         '''
-        if not isinstance(opponent_color, str):
+        if not isinstance(color, str):
             raise TypeError('opponent_color must be a string')
-        if opponent_color not in ["white", "black"]:
+        if color not in ["white", "black"]:
             raise ValueError("opponent_color must be either black or white")
 
         self.pen_for_message.up()
         self.pen_for_message.setposition(-SQUARE, self.board_size * \
             SQUARE / 2 + 1/2 * SQUARE)
 
-        if opponent_color == "black":
-            player = "White"
-        elif opponent_color == "white":
-            player = "Black"
-        text = "Turn: " + player
+        # if opponent_color == "black":
+        #     player = "White"
+        # elif opponent_color == "white":
+        #     player = "Black"
+        text = "Turn: " + color.capitalize()
 
         self.pen_for_message.down()
         self.pen_for_message.write(text, font = ("Arial", 16, "normal"))
@@ -179,6 +180,7 @@ class Terminal_board:
             raise TypeError if winner_count is not an integer
             raise ValueError if winner_count is not positive
         '''
+
         if not isinstance(winner_count, int):
             raise TypeError('winner_count must be an integer')
         if winner_count <= 0:
@@ -230,19 +232,26 @@ class Terminal_board:
         self.pen_for_message.clear()
 
 
-    def get_winner_name(self):
-        '''
-        Method -- get_winner_name()
-            Prompt the user to input the name of the winner
-        Parameter: self -- the current object
-        '''
-        if self.winner == "tie":
-            winner_name1 = input("Please enter the first player's name: ")
-            winner_name2 = input("Please enter the second player's name: ")
-            winner_list = [winner_name1, winner_name2]
-        else:
-            winner_name = input("Please enter the winner's name: ")
-            winner_list = [winner_name]
+    # def get_winner_name(self):
+    #     '''
+    #     Method -- get_winner_name()
+    #         Prompt the user to input the name of the winner
+    #     Parameter: self -- the current object
+    #     '''
+    #     if self.winner == "tie":
+    #         winner_name1 = input("Please enter the first player's name: ")
+    #         winner_name2 = input("Please enter the second player's name: ")
+    #         winner_list = [winner_name1, winner_name2]
+    #     else:
+    #         winner_name = input("Please enter the winner's name: ")
+    #         winner_list = [winner_name]
 
+    #     print("Thanks for playing Othello!")
+    #     return winner_list
+
+    def get_human_player_name(self):
+        '''
+        '''
+        human_player = input("Thanks for playing Othello. Please enter your name: ")
         print("Thanks for playing Othello!")
-        return winner_list
+        return human_player

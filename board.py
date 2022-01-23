@@ -1,7 +1,7 @@
 '''
 Yingyu Lin
 CS 5001, Fall 2021
-Final Project, Milestone 1
+Final Project, Milestone 3
 
 This program creates a class Board that represents the status of each cell on 
 the board. It belongs to Model.
@@ -37,7 +37,7 @@ class Board:
         self.name = "Board"
         self.board_size = board_size
         self.board = self.create_board()
-        self.is_player1 = True
+        self.is_human_player = True
 
     def __str__(self):
         '''
@@ -145,10 +145,10 @@ class Board:
         Parameter:self -- the current object
         '''
 
-        if self.is_player1:
-            self.is_player1 = False
-        elif not self.is_player1:
-            self.is_player1 = True
+        if self.is_human_player:
+            self.is_human_player = False
+        elif not self.is_human_player:
+            self.is_human_player = True
 
 
     def get_cell_status(self, row, column):
@@ -224,14 +224,9 @@ class Board:
         Method -- get_current_player()
         Parameters: self -- the current object
         '''
-        if self.is_player1:
+        if self.is_human_player:
             return "black"
         else:
             return "white"
 
 
-# def main():
-#     board = Board(2)
-#     print(board.board)
-
-# main()

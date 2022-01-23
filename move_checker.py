@@ -1,3 +1,12 @@
+'''
+Yingyu Lin
+CS 5001, Fall 2021
+Final Project, Milestone 3
+
+This program creates a class Move_checker that checks if a move is legal. 
+It belongs to Model.
+'''
+
 from board import Board
 
 class Move_checker:
@@ -14,9 +23,28 @@ class Move_checker:
         if not isinstance(board, Board):
             raise TypeError('board must be an instance of Board')
 
+        self.name = "Move_checker"
         self.board = board
         self.board_size = self.board.get_board_size()
         self.board_list = self.board.get_board_list()
+
+    def __str__(self):
+        '''
+        String method to return a string representation of the Move_checker
+        Parameter: self -- the current object
+        '''
+        return "Move checker for a " + str(self.board_size) + " x " + \
+            str(self.board_size) + " board"
+
+
+    def __eq__(self, other):
+        '''
+        Equality method
+        Parameters: 
+            self -- the current object
+            other -- another Move_checker object
+        '''
+        return self.board == other.board
 
 
     def get_opponent_color(self, color):

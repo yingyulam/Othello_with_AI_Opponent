@@ -1,7 +1,14 @@
+'''
+Yingyu Lin
+CS 5001, Fall 2021
+Final Project, Milestone 3
+
+'''
+
 import unittest
 from converter import Converter
 
-class TestBoard(unittest.TestCase):
+class Test_converter(unittest.TestCase):
 
     def test_converter_basic(self):
         converter = Converter(4)

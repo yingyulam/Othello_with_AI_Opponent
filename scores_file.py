@@ -1,4 +1,11 @@
+'''
+Yingyu Lin
+CS 5001, Fall 2021
+Final Project, Milestone 3
 
+This program creates a class Scores_file that prompt the user for name and store 
+the game score records. It belongs to View.
+'''
 
 class Scores_file:
     
@@ -10,6 +17,7 @@ class Scores_file:
         self.name = "Scores File"
         self.filename = "scores.txt"
         self.scores_list = self.convert_scores_to_list()
+
 
     def download_file(self):
         '''
@@ -32,6 +40,7 @@ class Scores_file:
             raise OSError("Something went wrong while reading the file {}".\
                 format(self.filename))
 
+
     def convert_scores_to_list(self):
         '''
         Method -- convert_scores_to_list()
@@ -51,7 +60,7 @@ class Scores_file:
         return scores_list
 
     
-    def update(self, winner_name_list, winner_score):
+    def update(self, human_player_name, human_player_score):
         '''
         Method -- update()
             update the scores file
@@ -64,25 +73,18 @@ class Scores_file:
             raise TypeError if the winner_score argument is not an integer
             raise ValueError if the winner_score argument is not greater than 2
         '''
-        if not isinstance(winner_name_list, list):
-            raise TypeError('winner_name_name must be a list')
-        if not isinstance(winner_score, int):
+        if not isinstance(human_player_name, str):
+            raise TypeError('winner_name_name must be a str')
+        if not isinstance(human_player_score, int):
             raise TypeError('winner_score must be an integer')
-        if winner_score <= 2:
-            raise ValueError("winner score must be greater than 2")
-        
-        winner_name1 = winner_name_list[0]
+        if human_player_score <= 2:
+            raise ValueError("winner score must be greater than 2")  
 
-        if len(self.scores_list) <= 0 or \
-            winner_score < int(self.scores_list[0][-1]):
-            self.scores_list.append([winner_name1, str(winner_score)])
+        if len(self.scores_list) <= 0 or human_player_score < int(self.scores_list[0][-1]):
+            self.scores_list.append([human_player_name, str(human_player_score)])
         
-        elif winner_score >= int(self.scores_list[0][-1]):
-            self.scores_list.insert(0, [winner_name1, str(winner_score)])  
-
-        if len(winner_name_list) > 1:
-            winner_name2 = winner_name_list[1]
-            self.scores_list.append([winner_name2, str(winner_score)])
+        elif human_player_score >= int(self.scores_list[0][-1]):
+            self.scores_list.insert(0, [human_player_name, str(human_player_score)])  
         
         self.upload_file()
 
@@ -101,11 +103,9 @@ class Scores_file:
                 scores_file.write("\n")
             scores_file.close()
         except FileNotFoundError:
-            raise FileNotFoundError("file {} does not exist".format(self.filename))
+            raise FileNotFoundError("file does not exist")
         except PermissionError:
-            raise PermissionError("you do not have permission to use {}".\
-                format(self.filename))
+            raise PermissionError("you do not have permission to use this file")
         except OSError as ex:
-            raise OSError("Something went wrong while reading the file {}".\
-                format(self.filename))
+            raise OSError("Something went wrong while reading the file")
 

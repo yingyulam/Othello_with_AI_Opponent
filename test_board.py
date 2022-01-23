@@ -1,7 +1,14 @@
+'''
+Yingyu Lin
+CS 5001, Fall 2021
+Final Project, Milestone 3
+
+'''
+
 import unittest
 from board import Board
 
-class TestBoard(unittest.TestCase):
+class Test_board(unittest.TestCase):
 
     def test_init_board_basic(self):
         board = Board(2)
@@ -9,7 +16,7 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.board_size, 2)
         expected_board = [["empty", "empty"], ["empty", "empty"]]
         self.assertEqual(board.board, expected_board)
-        self.assertTrue(board.is_player1)
+        self.assertTrue(board.is_human_player)
 
     def test_init_board_not_integer(self):
         with self.assertRaises(TypeError):
@@ -57,7 +64,7 @@ class TestBoard(unittest.TestCase):
                 ["empty", "empty", "empty", "black"], \
                     ["empty", "empty", "empty", "empty"]]
         self.assertEqual(board.board, expected_board)
-        self.assertFalse(board.is_player1)
+        self.assertFalse(board.is_human_player)
 
     def test_update_row_not_integer(self):
         with self.assertRaises(TypeError):
@@ -149,13 +156,13 @@ class TestBoard(unittest.TestCase):
     def switch_player_True_to_False(self):
         board = Board(4)
         board.switch_player()
-        self.assertFalse(board.is_player1)
+        self.assertFalse(board.is_human_player)
 
     def switch_player_False_to_True(self):
         board = Board(4)
         board.switch_player()
         board.switch_player()
-        self.assertTrue(board.is_player1)
+        self.assertTrue(board.is_human_player)
 
     def test_get_cell_status_basic(self):
         board = Board(4)
